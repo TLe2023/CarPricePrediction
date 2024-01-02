@@ -164,8 +164,7 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 ### 4.1 Data Cleaning and Selection
 
-<style>
-</style**Cleaning:** Leading, trailing spaces and special characters were removed
+**Cleaning:** Leading, trailing spaces and special characters were removed
 
 - **Cleaning:** Leading, trailing spaces and special characters were removed.
 
