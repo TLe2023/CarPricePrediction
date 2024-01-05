@@ -52,7 +52,7 @@ After investigating the dataset for missing or problematic data, some observatio
 - The dataset contains outliers. Many values of the car prices seem to be data errors because there are prices recorded as "1234567" or "12345678" or "1234567890"
 - The following attributes/features include NULL values. The "size" feature has more than 70% NULL values and can be dropped
 
-![  Insert](images\null.png)
+![fig1](images/null.png)
 
 #### 3.2.2 Explore the target attribute - Price
 
