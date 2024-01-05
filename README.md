@@ -206,15 +206,15 @@ overfitting was mitigated with cross-validation.
 
 ### 5.1 Train models
 
-**Cross-validation:** Holdout cross-validation was implemented. Models were trained on the training set and validated with the test set.
+**Cross-validation:** Holdout cross-validation was implemented. Models were train on the training set and validated with the test set.
 
 **Model technique:** Three multivariate regression models were built. They are Ridge Regression, Lasso Regression and Linear Regression.
 
 **Hyperparameter tuning:** The popular GridSearchCV was not used to tweak model performance for optimal results because it can be computationally expensive for this dataset. Instead, RidgeCV and LassoCV modules were used because these modules implement Ridge regression and Lasso regression with built-in cross-validation of the alpha parameter - the hyperparameter. By default, they work in the same way as GridSearchCV with Leave-One-Out Cross-Validation to select an optimum alpha parameter.
 
-**Feature selection:** RidgeCV and LassoCV were trained with all transformed features of the trained dataset. SelectFromModel was used to select features for the Linear Regression model.
+**Feature selection:** RidgeCV and LassoCV were train with all transformed features of the trtrainataset. SelectFromModel was used to select features for the Linear Regression model.
 
-**Validation metrics:** Two measuring metrices are used to validate how well the predictions of the trained models approximate the real data values. They are:
+**Validation metrics:** Two measuring metrices are used to validate how well the predictions of the train models approximate the real data values. They are:
 
 - R2 (R-Squared) or Coefficient of Determination
 
@@ -226,7 +226,7 @@ R2 is the default scoring in many sklearn models. The best possible R2 score is 
 
 Below is the result of the model validation:
 
-**Scoring:** The scoring table below illustrates that all three models achieved similar performance. The RMSE scores of all three models are higher the baseline which is 12,578 on test set. Ridge Regression performed best with a small margin. Models were scored on both the trained set and test set. A slight increase in the RMSE loss score and a decrease in the R2 score on the test set indicated that the models were not overfitted. 
+**Scoring:** The scoring table below illustrates that all three models achieved similar performance. The RMSE scores of all three models are higher the baseline which is 12,578 on test set. Ridge Regression performed best with a small margin. Models were scored on both the train set and test set. A slight increase in the RMSE loss score and a decrease in the R2 score on the test set indicated that the models were not overfitted. 
 
 | No. | Model                     | R2   | RMSE     |
 | --- | ------------------------- | ---- | -------- |
@@ -241,7 +241,7 @@ Below is the result of the model validation:
 
 ![fig12](images/prediction.png)
 
-The black line is the perfect prediction e.g. the predicted value equals the actual values. The trained models can be considered making acceptable predictions because these predictions converged along the black line with some exceptions.
+The black line is the perfect prediction e.g. the predicted value equals the actual values. The train models can be considered making acceptable predictions because these predictions converged along the black line with some exceptions.
 
 **The Ridge model was selected with 73% R2 score and 6,495 RMSE score.** This reveals that 73% of the variability observed in the "price" variable can be explained or predicted by the selected model. In addtion, the prediction is off about $$6.5K.
 
