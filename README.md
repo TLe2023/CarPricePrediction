@@ -12,7 +12,7 @@ The goal of this project is to understand what factors make a used car more or l
 
 The Cross-Industry Standard Process for Data Mining (CRISP-DM) framework is applied to guide this effort. The framework includes six phases: business understanding, data understanding, data preparation, modeling, evaluation, and deployment. This project will focus on the first five phases of the CRISP-DM framework.
 
-After understanding the business objectives, the collected data will be explored by using visualizations and probability distributions to form initial findings and hypothesis. Then, data will be prepared to handle any integrity issues and cleaning. Features or attributes will be engineered for modelling. Next, a few different predictive regression models with the price as the target will be built with different and, hopefully, optimum optimal parameters. They are Ridge, Lasso and Linear regression models with a cross-validation method applied. Lastly, one model that appears to have high quality will be validated and inspected.  The feature importances will be identified to determine if meaningful insights on drivers of used car prices can be provided.
+After understanding the business objectives, the collected data will be explored by using visualizations and probability distributions to form initial findings and hypothesis. Then, data will be prepared to handle any integrity issues and cleaning. Features or attributes will be engineered for modelling. Next, a few different predictive regression models with the price as the target will be built with different and, hopefully, optimal parameters. They are Ridge, Lasso and Linear regression models with a cross-validation method applied. Lastly, one model that appears to have high quality (compared to the baseline and the other built models) will be validated and inspected.  The feature importances will be identified to determine if meaningful insights on drivers of used car prices can be provided.
 
 ## 3. Data Understanding
 
@@ -71,8 +71,8 @@ The standard deviation of the "price" feature is quite large: 12,182,282.17 with
 - "Ferrari", "Aston-Martin" cars stand out as the top manufacturer in 26K - 200K price range. Surprisingly, “salvage” condition is included in this price range.
   
   ![fig3](images/4thquartile.png)
-  
-  **"Price" in the 2nd and 3rd quartile**: 
+
+**"Price" in the 2nd and 3rd quartile**: 
 
 - The 2nd + 3rd quartile dataset is expanded to include some observations in the 1st quartile and the 4th quartile (lower bound = 500 and upper bound = 200K) to hopefully gain a better understanding of the data via distribution and visualization.
 
@@ -198,7 +198,7 @@ overfitting was mitigated with cross-validation.
 
  ![fig10](images/target.png)
 
-**Correlation Matrix:** The correlation matrix below inllustrated that the top four features correlated to the price features are "model", "odometer", "year". 
+**Correlation Matrix:** The correlation matrix below inllustrated that the top four features correlated to the price features are "model", "odometer", "year" and "type". 
 
 ![fig11](images/correlation.png)
 
@@ -260,8 +260,6 @@ The results can be interpreted as the follows: An increase of the “model” or
 #### 6.2 Permutation feature importance
 
 Permutation feature importance model inspection technique randomly shuffles a single feature value and consequently breaks the relationship between the feature and the target - price. The decrease in the model score indicates the level of dependency of the model to the feature and, therefore, how important the feature is to the model. Below are the results of permutation importance computed on both the train set and the test set for the selected model. The top three features are **"model", "odometer" and “year”**. The results are consistant with that of the coefficient method.
-
-
 
 ![fig14](images/permutation.png)
 
