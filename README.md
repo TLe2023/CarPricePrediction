@@ -218,26 +218,28 @@ transformation technique.
 
 **Validation metrics:** Two measuring metrices are used to validate how well the predictions of the trained models approximate the real data values. They are:
 
-- R2 (R-Squared) or coefficient of determination
+- R2 (R-Squared) or Coefficient of Determination
 
-- MedAE or median absolute error loss
+- RMSE or Root Mean Squared Error (loss)
 
-R2 is the default scoring in many sklearn models. The best possible R2 score is 1.0 indicating all variance in the target variable can be explained by the model. The MedAE score was added as this scoring is robust or strong resilience to outliers. The loss is calculated by taking the median of all absolute differences between the actual and predicted values. The lower MedAE score indicates a better performance since it is a loss or cost measurement.
+R2 is the default scoring in many sklearn models. The best possible R2 score is 1.0 indicating all variance in the target variable can be explained by the model. The RMSE score was added as it is sensitive to outliers and due to its ease of interpretation. It measures the average difference between the predicted and actual values in the same unit. The lower RMSE score indicates a better performance and the best possible RMSE score is 0 since it is a loss measurement.
 
 #### 5.2 Validate and Select Model
 
 Below is the result of the model validation:
 
-**Scoring:** The scoring table below illustrates that all three models achieved similar performance. Ridge Regression performed best with a small margin. Models were scored on both the trained set and test set. A slight increase in the MedAE loss score and a decrease in the R2 score on the test set indicated that the models were not overfitted. 
+**Scoring:** The scoring table below illustrates that all three models achieved similar performance. The RMSE scores of all three models are higher the baseline which is 12,578 on test set.
 
-| No. | Model                     | R2   | MedAE   |
-| --- | ------------------------- | ---- | ------- |
-| 0   | RidgeCV - Train           | 0.76 | 2600.00 |
-| 1   | RidgeCV - Test            | 0.73 | 2797.47 |
-| 2   | LassoCV - Train           | 0.76 | 2600.00 |
-| 3   | LassoCV - Test            | 0.73 | 2799.75 |
-| 4   | Linear Regression - Train | 0.72 | 2995.00 |
-| 5   | Linear Regression - Test  | 0.69 | 3000.56 |
+ Lasso Regression performed best with a small margin. Models were scored on both the trained set and test set. A slight increase in the RMSE loss score and a decrease in the R2 score on the test set indicated that the models were not overfitted. 
+
+| No. | Model                     | R2   | RMSE     |
+| --- | ------------------------- | ---- | -------- |
+| 0   | RidgeCV - Train           | 0.76 | 6,183.48 |
+| 1   | RidgeCV - Test            | 0.73 | 6,489.48 |
+| 2   | LassoCV - Train           | 0.76 | 6,180.43 |
+| 3   | LassoCV - Test            | 0.73 | 6,488.04 |
+| 4   | Linear Regression - Train | 0.72 | 6,651.70 |
+| 5   | Linear Regression - Test  | 0.69 | 6,984.39 |
 
 **Actual vs Prediction:** to validate the performance of the models, the Actual vs Prediction scatter chart below were plotted.
 
@@ -245,7 +247,7 @@ Below is the result of the model validation:
 
 The black line is the perfect prediction e.g. the predicted value equals the actual values. The trained models can be considered making acceptable predictions because these predictions converged along the black line with some exceptions.
 
-The Lasso model is selected with 74% R2 score and 2900 MedAE score
+**The Lasso model is selected with 73% R2 score and 6,488 MedAE score.** This reveals that 73% of the variability observed in the "price" variable can be explained or predicted by the selected model. In addtion, the prediction is off about $$6.5K.
 
 ### 6 Evaluation
 
@@ -281,7 +283,7 @@ George Box wrote “All models are wrong, some are useful”. While the relation
 
 **Next steps:** 
 
-The project can be continued with further optimizing the performance of the models. Some examples are: use Lasso as the feature selector and/or apply additional and different algorithms. In addition, special or unique features to distinguish antique cars (which yield a high value) were not observed in this dataset and can be added. 
+The project can be continued with further optimizing the performance of the models. Some examples are: using Lasso as the feature selector and/or applying additional and different algorithms. In addition, special or unique features to distinguish antique cars (which yield a high value) were not observed in this dataset and can be considered to be added. 
 
 ## 10. Jupyter Notebook
 
