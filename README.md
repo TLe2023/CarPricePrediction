@@ -84,7 +84,7 @@ The standard deviation of the "price" feature is quite large: 12,182,282.17 with
 
 The dataset which includes observations with prices within the range of 500 - 200,000 was used to plot and to further explore the initial data.
 
-###### Price, Year, and Drive features:
+##### Price, Year, and Drive features:
 
 - Used cars tend to have better values when they are recent or very old. Perhaps, it is because these old cars are classic cars.
 
@@ -94,7 +94,7 @@ The dataset which includes observations with prices within the range of 500 - 20
   
   ![fig5](images/price_year_sample.png) 
 
-###### Price, Odometer and Transmission features:
+##### Price, Odometer and Transmission features:
 
 - It is not surprising that cars have better price with lower odometers. They are mostly automatic.
 
@@ -102,32 +102,32 @@ The dataset which includes observations with prices within the range of 500 - 20
 
   ![fig6](images/count_cat.png)
 
-###### Price and Fuel features:
+##### Price and Fuel features:
 
 - Diesel cars are the most expensive, followed by eletric cars and other sources to power cars. 
 - However, many cars available in the dataset are gas and have lower prices
 
-###### Price and Condition features:
+##### Price and Condition features:
 
 - Cars with "new" condition perform best in price, followed by "good", "like new" and "excellent" conditions. Cars with "fair" and "salvage" conditions have low values.
 
 - Many cars available in the dataset are "good" and "excellent"
 
-###### Price and Title Status features:
+##### Price and Title Status features:
 
 - Cars with Lien and Clean titles are more expensive. Not surprisingly, parts only and missing title cars have lower price
 - Most cars available in the dataset have "clean" titles
 
-###### Price and Cylinders features:
+##### Price and Cylinders features:
 
 - Most cars have 4 or 6 or 8 cylinders
 - Prices increase by the even number of cynlinders: 4, 6, 8, 10, 12 cynlinders
 
-###### Price and Paint Color features:
+##### Price and Paint Color features:
 
 - Most cars are white or black and they also have good prices
 
-###### Price and Type features:
+##### Price and Type features:
 
 - Mini van category is the lowest valued category while interestingly, used pickups have good prices
 
@@ -135,11 +135,11 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 ![fig7](images/box_cat.png)
 
-###### Price and Manufacturer features:
+##### Price and Manufacturer features:
 
 - Ferrari and Aston-Martin cars stood out and have the highest prices while most cars are Ford, Toyota and Chevrolet
 
-###### Price and State features:
+##### Price and State features:
 
 - California and Floria lead in volume of cars. There is no obvious differences in prices across all states
   
