@@ -275,7 +275,7 @@ It is important to mention that the identification of feature importance is base
 
 In addition, the relationships between the features and the target do not imply causal relationships. There are potentially unobserved confounding variables that could be correlated with both the target variable, “price”, and other identified features: “model” or “odometer” or “year”. One example could be the production capacity of new cars. The positive “year” and “price” relationship suggests that the more recent a car is, the better it has in price. However, our dataset includes used cars manufactured up to 2022. It was generally acknowledged that used cars prices went up during the Covid and global chip shortage period of 2020–2023.
 
-George Box wrote “All models are wrong, some are useful”. While the relationship between the identified features and the target feature ("price") should be interpreted with caution, the project findings still pinpoint to what consumers generally value in a used car:  **the model of the car, a car with fewer miles and a more recent car.**
+George Box wrote “All models are wrong, some are useful”. While **the relationship between the identified features and the target feature ("price") should be interpreted with caution**, the project findings still pinpoint to what consumers generally value in a used car:  **the model of the car, a car with fewer miles and a more recent car.**
 
 **Next steps:** 
 
