@@ -60,7 +60,7 @@ The standard deviation of the "price" feature is quite large: 12,182,282.17 with
 
 **"Price" in the 1st quartile:** Many cars in the 1st quantile are less than $500 and are parts only or are missing title.
 
-![](C:\Users\ezmur\OneDrive\Documents\My%20codes\Practical%20Assignments\practical_application_II_starter\images\1stquartile.png)
+![fig2](images/1stquartile.png)
 
 **"Price" in the 4th quartile**: 
 
@@ -70,7 +70,7 @@ The standard deviation of the "price" feature is quite large: 12,182,282.17 with
 
 - "Ferrari", "Aston-Martin" cars stand out as the top manufacturer in 26K - 200K price range. Surprisingly, “salvage” condition is included in this price range.
   
-  ![](C:\Users\ezmur\OneDrive\Documents\My%20codes\Practical%20Assignments\practical_application_II_starter\images\4thquartile.png)
+  ![fig3](images/4thquartile.png)
   
   **"Price" in the 2nd and 3rd quartile**: 
 
@@ -78,7 +78,7 @@ The standard deviation of the "price" feature is quite large: 12,182,282.17 with
 
 - The violin plot below indicates that prices are concentrated within the range below 25,000.
   
-  ![](C:\Users\ezmur\OneDrive\Documents\My%20codes\Practical%20Assignments\practical_application_II_starter\images\IQR.png)
+  ![fig4](images/IQR.png)
 
 #### 3.2.3 Explore the relationship of the Price feature and other numeric features
 
@@ -92,7 +92,7 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 - Rear wheel drive cars seem to dominate the classic car population while recent year cars tend to be front wheel drive cars (less expensive) and four wheel drive cars (more expensive).
   
-  ![](C:\Users\ezmur\OneDrive\Documents\My%20codes\Practical%20Assignments\practical_application_II_starter\images\price_year_sample.png) 
+  ![fig5](images/price_year_sample.png) 
 
 ###### Price, Odometer and Transmission features:
 
@@ -100,7 +100,7 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 #### 3.2.4 Explore the relationship of the Price feature and other categorical features
 
-###### ![](C:\Users\ezmur\OneDrive\Documents\My%20codes\Practical%20Assignments\practical_application_II_starter\images\count_cat.png)
+  ![fig6](images/count_cat.png)
 
 ###### Price and Fuel features:
 
@@ -133,7 +133,7 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 ###### 
 
-![](C:\Users\ezmur\OneDrive\Documents\My%20codes\Practical%20Assignments\practical_application_II_starter\images\box_cat.png)
+![fig7](images/box_cat.png)
 
 ###### Price and Manufacturer features:
 
@@ -143,9 +143,9 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 - California and Floria lead in volume of cars. There is no obvious differences in prices across all states
   
-  ![](C:\Users\ezmur\OneDrive\Documents\My%20codes\Practical%20Assignments\practical_application_II_starter\images\count_state_manufacturer.png)
+  ![fig8](images/count_state_manufacturer.png)
   
-  ![](C:\Users\ezmur\OneDrive\Documents\My%20codes\Practical%20Assignments\practical_application_II_starter\images\box_state_manufacturer.png)
+  ![fig9](images/box_state_manufacturer.png)
 
 ## 3.2.5 Hypothesis
 
@@ -156,8 +156,6 @@ The dataset which includes observations with prices within the range of 500 - 20
 - Manufacturer appears to play an important role in prices.
 
 - The "model" attribute is a categorical feature with extremely high cardinality which impedes the ability to plot. Intuition suggests that its significance (if any) should not be ignored.
-
-## 
 
 ## 4. Data Preparation
 
@@ -200,11 +198,11 @@ overfitting was mitigated with cross-validation.
 scaler. Target feature, 'price', was normalized with quartile the
 transformation technique.
 
-![](images\target.png)
+ ![fig10](images/target.png)
 
 **Correlation Matrix:** The correlation matrix below inllustrated that the top four features correlated to the price features are "model", "odometer", "year". 
 
-![](C:\Users\ezmur\OneDrive\Documents\My%20codes\GitHub\CarPricePrediction\images\correlation.png)
+![fig11](images/correlation.png)
 
 ## 5. Modeling
 
@@ -243,7 +241,7 @@ Below is the result of the model validation:
 
 **Actual vs Prediction:** to validate the performance of the models, the Actual vs Prediction scatter chart below were plotted.
 
-Insert
+![fig12](images/prediction.png)
 
 The black line is the perfect prediction e.g. the predicted value equals the actual values. The trained models can be considered making acceptable predictions because these predictions converged along the black line with some exceptions.
 
@@ -257,7 +255,7 @@ To identify which which features are most predictive, two techniques were used: 
 
 The coefficients of the selected model were plotted below. The plot shows dependencies between a feature and the target (“price”). They are **“model”, “odometer” and “year”** features. 
 
-![](C:\Users\ezmur\OneDrive\Documents\My%20codes\GitHub\CarPricePrediction\images\coefs.png)
+![fig13](images/coefs.png)
 
 The results can be interpreted as the follows: An increase of the “model” or “year” will induce an increase of the “price” **when all other features remain constant**. On the other hand, a decrease of the "odometer"" will induce an increase of the “price” **when all other features remain constant**.
 
@@ -265,7 +263,7 @@ The results can be interpreted as the follows: An increase of the “model” or
 
 Permutation feature importance model inspection technique randomly shuffles a single feature value and consequently breaks the relationship between the feature and the target - price. The decrease in the model score indicates the level of dependency of the model to the feature and, therefore, how important the feature is to the model. Below are the results of permutation importance computed on both the trained set and the test set for the selected model. The top three features are **"model", "odometer" and “year”**. The results are consistant with that of the coefficient method.
 
-![](C:\Users\ezmur\OneDrive\Documents\My%20codes\GitHub\CarPricePrediction\images\permutation.png)
+![fig14](images/permutation.png)
 
 Features that are important on the trained set but not on the test set might cause the model to overfit. The similarity of the feature importance ranking between those two plots, trained and test, suggests that the selected model is not overfitting.
 
@@ -287,4 +285,4 @@ The project can be continued with further optimizing the performance of the mode
 
 ## 10. Jupyter Notebook
 
-Please refer to the [Used Car Jupiter Notebook](coupons_final.ipynb) for more information.
+Please refer to the [Used Car Jupiter Notebook](UsedCarPricePrediction.ipynb) for more information.
