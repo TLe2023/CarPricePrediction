@@ -243,7 +243,7 @@ Below is the result of the model validation:
 
 The black line is the perfect prediction e.g. the predicted value equals the actual values. The train models can be considered making acceptable predictions because these predictions converged along the black line with some exceptions.
 
-**The Ridge model was selected with 73% R2 score and 6,495 RMSE score.** This reveals that 73% of the variability observed in the "price" variable can be explained or predicted by the selected model. In addtion, the RMSE suggests that on everage or the typical difference between the predictions and the actual prices is about $6.5K - with larger errors being weighted more heavily.
+**The Ridge model was selected with 73% R2 score and 6,495 RMSE score.** This reveals that 73% of the variability observed in the "price" variable can be explained or predicted by the selected model. In addition, the RMSE suggests that on everage or the typical difference between the predictions and the actual prices is about $6.5K - with larger errors being weighted more heavily.
 
 ### 6. Evaluation
 
