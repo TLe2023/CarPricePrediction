@@ -1,3 +1,5 @@
+# 
+
 # What drives the price of a used car?
 
 ## 1.  Business Understanding
@@ -9,7 +11,6 @@ The goal of this project is to understand what factors make a used car more or l
 ## 2. Methodology
 
 The Cross-Industry Standard Process for Data Mining (CRISP-DM) framework is applied to guide this effort. The framework includes six phases: business understanding, data understanding, data preparation, modeling, evaluation, and deployment. This project will focus on the first five phases of the CRISP-DM framework.
-
 
 After understanding the business objectives, the collected data will be explored by using visualizations and probability distributions to form initial findings and hypothesis. Then, data will be prepared to handle any integrity issues and cleaning. Features or attributes will be engineered for modelling. Next, a few different predictive regression models with the price as the target will be built with different and, hopefully, optimum optimal parameters. They are Ridge, Lasso and Linear regression models with a cross-validation method applied. Lastly, one model that appears to have high quality will be validated and inspected.  The feature importances will be identified to determine if meaningful insights on drivers of used car prices can be provided.
 
@@ -51,12 +52,11 @@ After investigating the dataset for missing or problematic data, some observatio
 - The dataset contains outliers. Many values of the car prices seem to be data errors because there are prices recorded as "1234567" or "12345678" or "1234567890"
 - The following attributes/features include NULL values. The "size" feature has more than 70% NULL values and can be dropped
 
-![  Insert](C:\Users\ezmur\OneDrive\Documents\My%20codes\Practical%20Assignments\practical_application_II_starter\images\null.png)
+![  Insert](images\null.png)
 
 #### 3.2.2 Explore the target attribute - Price
 
 The standard deviation of the "price" feature is quite large: 12,182,282.17 with min value of 0 and max value of 3.736929e+09. After detecting outliers by using the boxplot, the dataset was split into three datasets based on quartile (1st, 4th and 2nd+3rd) for visualization.
-
 
 **"Price" in the 1st quartile:** Many cars in the 1st quantile are less than $500 and are parts only or are missing title.
 
@@ -71,8 +71,8 @@ The standard deviation of the "price" feature is quite large: 12,182,282.17 with
 - "Ferrari", "Aston-Martin" cars stand out as the top manufacturer in 26K - 200K price range. Surprisingly, “salvage” condition is included in this price range.
   
   ![](C:\Users\ezmur\OneDrive\Documents\My%20codes\Practical%20Assignments\practical_application_II_starter\images\4thquartile.png)
-
- **"Price" in the 2nd and 3rd quartile**: 
+  
+  **"Price" in the 2nd and 3rd quartile**: 
 
 - The 2nd + 3rd quartile dataset is expanded to include some observations in the 1st quartile and the 4th quartile (lower bound = 500 and upper bound = 200K) to hopefully gain a better understanding of the data via distribution and visualization.
 
@@ -91,7 +91,6 @@ The dataset which includes observations with prices within the range of 500 - 20
 - Used cars which are manufactured around the year 2000 (e.g. 10-15 years old) seem to have the lowest value.
 
 - Rear wheel drive cars seem to dominate the classic car population while recent year cars tend to be front wheel drive cars (less expensive) and four wheel drive cars (more expensive).
-  
   
   ![](C:\Users\ezmur\OneDrive\Documents\My%20codes\Practical%20Assignments\practical_application_II_starter\images\price_year_sample.png) 
 
@@ -150,7 +149,7 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 ## 3.2.5 Hypothesis
 
-- Odometer seems to have a strong negative impact on price. Cars with low odometer have better values.
+- Odometer seems to have a strong negative correlation with price. Cars with low odometer have better values.
 
 - Prices of used cars seem to be influenced by their manufactured year. However, the relationship seem to be non-linear. Classic cars (the year value is small) and recent year used cars (the year value is high) tend to have better values. Cars manufactured approximate in 2000 seem to have the lowest prices. It appears that these cars are old but not old enough to become a valuable classic.
 
@@ -158,25 +157,23 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 - The "model" attribute is a categorical feature with extremely high cardinality which impedes the ability to plot. Intuition suggests that its significance (if any) should not be ignored.
 
-##
+## 
 
 ## 4. Data Preparation
 
 ### 4.1 Data Cleaning and Selection
 
-**Cleaning:** Leading, trailing spaces and special characters were removed
-
 - **Cleaning:** Leading, trailing spaces and special characters were removed.
 
-- **Identify and remove less valued features:** Attributes which are identified as less useful were dropped. They are "id" and 'VIN' variables. The "size" column contains more than 70% of Null values. Therefore it is dropped. In addition, "state and "region" are related and one of them ("state") is removed.
+- **Identify and remove less valued features:** Attributes which are identified as less useful were dropped. They are "id" and 'VIN' variables. The "size" column contains more than 70% of Null values and was dropped. In addition, "state and "region" are related and one of them ("state") was removed.
 
-- **Identify and remove outliers:** Outliers were removed by using the interquartile technique with a modification of the interquartile range (IQR). The 1.5 x IQR rule is applied to the "odometer" feature. For the "price" and "year" features, the lower bound or the upper bound were modified based on the results from the exploratory data analysis. For example, the upper bound of the "price" feature, calculated with the 1.5 x IQR rule, is 57K which is below the price range of Ferrari and Aston-Martin used cars. The approach to adjust the IQR bounderies attempted to balance data lost and model performance.
-
-| **Attributes** | **Min - Before** | **Min - After** | **Max - Before** | **Max - After** | **Count - Before** | **Count - After** |
-| -------------- | ---------------- | --------------- | ---------------- | --------------- | ------------------ | ----------------- |
-| Price          | 0.0              | 500.0           | 3.736929e+09     | 57322.0         | 426880             | 372713            |
-| Year           | 1900             | 1920            | 2.022000e+03     | 2022            | 425675             | 371733            |
-| Odometer       | 0.0              | 0.0             | 1.000000e+07     | 277231.0        | 422480             | 370669            |
+- **Identify and remove outliers:** Outliers were removed by using the interquartile technique with a modification of the interquartile range (IQR). The 1.5 x IQR rule is applied to the "odometer" feature. For the "price" and "year" features, the lower bound or the upper bound were modified based on the results from the exploratory data analysis. This approach of adjusting the IQR bounderies attempted to balance data lost and model performance.
+  
+  | No. | Attributes | Min    | Max      | Count - Before | Count - After |
+  | --- | ---------- | ------ | -------- | -------------- | ------------- |
+  | 0   | Price      | 500.0  | 57322.0  | 426880         | 372713        |
+  | 1   | Year       | 1920.0 | 2022.0   | 425675         | 371733        |
+  | 2   | Odometer   | 0.0    | 277231.0 | 422480         | 370669        |
 
 ### 4.2. Data Transformation
 
@@ -203,6 +200,12 @@ overfitting was mitigated with cross-validation.
 scaler. Target feature, 'price', was normalized with quartile the
 transformation technique.
 
+![](images\target.png)
+
+**Correlation Matrix:** The correlation matrix below inllustrated that the top four features correlated to the price features are "model", "odometer", "year". 
+
+![](C:\Users\ezmur\OneDrive\Documents\My%20codes\GitHub\CarPricePrediction\images\correlation.png)
+
 ## 5. Modeling
 
 ### 5.1 Train models
@@ -227,69 +230,61 @@ R2 is the default scoring in many sklearn models. The best possible R2 score is 
 
 Below is the result of the model validation:
 
-**Scoring:** The scoring table below illustrates that all three models achieved similar performance. Lasso Regression performed best with a small margin. Models were scored on both the trained set and test set. A slight increase in the MedAE loss score and a decrease in the R2 score on the test set indicated that the models were not overfitted. 
+**Scoring:** The scoring table below illustrates that all three models achieved similar performance. Ridge Regression performed best with a small margin. Models were scored on both the trained set and test set. A slight increase in the MedAE loss score and a decrease in the R2 score on the test set indicated that the models were not overfitted. 
 
-Insert
-
+| No. | Model                     | R2   | MedAE   |
+| --- | ------------------------- | ---- | ------- |
+| 0   | RidgeCV - Train           | 0.76 | 2600.00 |
+| 1   | RidgeCV - Test            | 0.73 | 2797.47 |
+| 2   | LassoCV - Train           | 0.76 | 2600.00 |
+| 3   | LassoCV - Test            | 0.73 | 2799.75 |
+| 4   | Linear Regression - Train | 0.72 | 2995.00 |
+| 5   | Linear Regression - Test  | 0.69 | 3000.56 |
 
 **Actual vs Prediction:** to validate the performance of the models, the Actual vs Prediction scatter chart below were plotted.
 
-
 Insert
 
-
 The black line is the perfect prediction e.g. the predicted value equals the actual values. The trained models can be considered making acceptable predictions because these predictions converged along the black line with some exceptions.
-
-
 
 The Lasso model is selected with 74% R2 score and 2900 MedAE score
 
 ### 6 Evaluation
 
-To identify which which features are most predictive, two techniques were used: Permutation feature importance and Coefficients.
+To identify which which features are most predictive, two techniques were used: Coefficients and Permutation feature importance.
 
-**Permutation feature importance:** Permutation feature importance model
-inspection technique randomly shuffles a single feature value and consequently breaks
-the relationship between the feature and the target - price. The decrease in the model
-score indicates the level of dependency of the model to the feature and, therefore, how important the feature is to the model. Below are the results of permutation importance computed on both the trained set and the test set for the selected model. The top three features are **"model", "odometer" and “year”**.
+#### 6.1 Coefficients
+
+The coefficients of the selected model were plotted below. The plot shows dependencies between a feature and the target (“price”). They are **“model”, “odometer” and “year”** features. 
+
+![](C:\Users\ezmur\OneDrive\Documents\My%20codes\GitHub\CarPricePrediction\images\coefs.png)
+
+The results can be interpreted as the follows: An increase of the “model” or “year” will induce an increase of the “price” **when all other features remain constant**. On the other hand, a decrease of the "odometer"" will induce an increase of the “price” **when all other features remain constant**.
+
+#### 6.2 Permutation feature importance
+
+Permutation feature importance model inspection technique randomly shuffles a single feature value and consequently breaks the relationship between the feature and the target - price. The decrease in the model score indicates the level of dependency of the model to the feature and, therefore, how important the feature is to the model. Below are the results of permutation importance computed on both the trained set and the test set for the selected model. The top three features are **"model", "odometer" and “year”**. The results are consistant with that of the coefficient method.
+
+![](C:\Users\ezmur\OneDrive\Documents\My%20codes\GitHub\CarPricePrediction\images\permutation.png)
 
 Features that are important on the trained set but not on the test set might cause the model to overfit. The similarity of the feature importance ranking between those two plots, trained and test, suggests that the selected model is not overfitting.
 
-
-
-**Coefficients:** The coefficients of the selected model were plotted below. The plot shows dependencies between a feature and the target (“price”). They are **“model”, “odometer” and “year”** features. The results are consistant with that of the permutation feature importance method.
-
-The results can be interpreted as the follows: An increase of the “model” or “year” will induce an increase of the “price” when all other features remain constant. On the other hand, a decrease of the "odometer will induce an increase of the “price” when all other features remain constant.
-
-
+In additiion, when data contains strong multicollinear features, the results of permutation importance might misleading in some cases. When a feature is permuted, the model can get the same information from the other correlated feature. Therefore, performance of the model does not effect. This is not the case for the selected model because the permutation importance plot shows that permuting a feature drops the accuracy by 0.5. In addition, based is on the correlation matrix above, features which are strong collinear do not present.
 
 ## 9. Conclusion and Recommendations
 
 To understand what drives the price of used cars, a used car dataset was explored and transformed so that three multivariate linear regression models named Ridge, Lasso, Linear Regression, were built and validated. The model with highest quality was inspected to identify the top three features which influence the model the most. They are **“model”, “odometer” and “year”**.
 
+It is important to mention that the identification of feature importance is based on coefficients. Coefficients in multivariate regression models represent the dependency between a given independent feature (like “odometer”) and the target or dependent variable (“price”), conditional on the other features. They reflect the average change in the target (“price”) for one unit of change in the independent feature (“odometer”) while other features are held constant in the model. Keeping other features static is a statistical condition and not a realistic condition in the real world. 
 
-It is important to mention that the identification of feature importance is dataset and model dependent. It is largely based on coefficients. Coefficients in multivariate linear models represent the dependency between a given independent feature (like “model”) and the target or dependent variable (“price”), conditional on the other features. They reflect the average change in the target (“price”) for one unit of change in the independent feature (“model”) while other features are held constant in the model. Keeping other features static is a statistical and not a realistic condition in the real world. 
+In addition, the relationships between the features and the target do not imply causal relationships. There are potentially unobserved confounding variables that could be correlated with both the target variable, “price”, and other identified features: “model” or “odometer” or “year”. One example could be the production capacity of new cars. The positive “year” and “price” relationship suggests that the more recent a car is, the better it has in price. However, our dataset includes used cars manufactured up to 2022. It was generally acknowledged that used cars prices went up during the Covid and global chip shortage period of 2020–2023.
 
+George Box wrote “All models are wrong, some are useful”. While the relationship between the identified features and the target feature ("price") should be interpreted with caution, the project findings still pinpoint to what consumers generally value in a used car:  **the model of the car, a car with fewer miles and a more recent car.**
 
-In addition, the relationships between the features and the target do not imply causal relationships. There are potentially unobserved confounding variables that could be correlated with both the target variable, “price”, and other identified features: “model” or “odometer” or “year”. One example could be the production capacity of new cars. The positive “year” and “price” relationship suggests that the more recent a car is, the better it has in price. However, our dataset includes used cars manufactured up to 2022. It was generally acknowledged that used cars prices went up during the Covid and global chip shortage period of 2020–2023. In addition, special or unique features to distinguish antique cars (which yield a high value) from other older cars were not observed in this dataset.
+**Next steps:** 
 
-
-George Box wrote “All models are wrong, some are useful”. While the relationship between the identified features and the target feature (price) should be interpreted with caution, the project findings still pinpoint to what consumers generally value in a used car:  a more recent car, a car with fewer miles and the model of the car.
-
-
-A way to expand this work in the future is to apply the same method for
-comparing these algorithms to others that are suited to regression
-problems. Some example algorithms are Light Gradient Boosted
-39
-Machine (LGBM), Kth Nearest Neighbor Regression (KNN), Decision
-Tree Regression (DTR), and Artificial Neural Networks (ANN). The
-problem of price prediction deals with continuous variables which
-makes it suited to regression algorithms, but by creating discrete
-intervals for the continuous variables such as price, other algorithms
-could be applied. 
-
-In order to bring this analysis back to the business objective of fine tuning the inventory, a next step could be to look at how profitable each car in inventory is compared with the predicted value of each car.
+The project can be continued with further optimizing the performance of the models. Some examples are: use Lasso as the feature selector and/or apply additional and different algorithms. In addition, special or unique features to distinguish antique cars (which yield a high value) were not observed in this dataset and can be added. 
 
 ## 10. Jupyter Notebook
 
-Please refer to the [Coupons Jupiter Notebook](coupons_final.ipynb) for more information.
+Please refer to the [Used Car Jupiter Notebook](coupons_final.ipynb) for more information.
