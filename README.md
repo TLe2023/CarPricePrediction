@@ -12,7 +12,7 @@ The goal of this project is to understand what factors make a used car more or l
 
 The Cross-Industry Standard Process for Data Mining (CRISP-DM) framework is applied to guide this effort. The framework includes six phases: business understanding, data understanding, data preparation, modeling, evaluation, and deployment. This project will focus on the first five phases of the CRISP-DM framework.
 
-After understanding the business objectives, the collected data will be explored by using visualizations and probability distributions to form initial findings and hypothesis. Then, data will be prepared to handle any integrity issues and cleaning. Features or attributes will be engineered for modelling. Next, a few different predictive regression models with the price as the target will be built with different and, hopefully, optimal parameters. They are Ridge, Lasso and Linear regression models with a cross-validation method applied. Lastly, one model that appears to have high quality (compared to the baseline and the other built models) will be validated and inspected.  The feature importances will be identified to determine if meaningful insights on drivers of used car prices can be provided.
+After understanding the business objectives, the collected data will be explored by using visualizations and probability distributions to form initial findings and hypothesis. Then, data will be prepared to handle any integrity issues and cleaning. Features or attributes will be engineered for modelling. Next, a few different predictive regression models with the price as the target will be built with different and, hopefully, optimal parameters. They are Ridge, Lasso and Linear regression models with a cross-validation method applied. Lastly, one model that appears to have high quality (compared to the baseline and the other built models) will be validated and inspected.  The importance of each feature will be identified to determine if meaningful insights on drivers of used car prices can be provided.
 
 ## 3. Data Understanding
 
@@ -25,7 +25,7 @@ The original dataset contained information about 3 million used cars. The datase
 | 1       | id                 | Identification                                                                                                              | int64              |
 | 2       | region             | Region: Florida Keys, South Jersey, Jackson Ville, etc.                                                                     | object             |
 | 3       | price              | Car price                                                                                                                   | int64              |
-| 4       | year               | Year of the car manufactured: 2007, 1989 etc.                                                                               | float64            |
+| 4       | year               | Manufactured year of the car : 2007, 1989 etc.                                                                              | float64            |
 | 5       | manufacturer       | Car manufacturer: Toyota, Volvo, Aston-Martin, etc.                                                                         | object             |
 | 6       | model              | Model of the car: Corvette, Sierra 2500, etc.                                                                               | object             |
 | 7       | condition          | Condition of a car: salvage, fair, good, excellent, like new, new                                                           | object             |
@@ -34,7 +34,7 @@ The original dataset contained information about 3 million used cars. The datase
 | 10      | odometer           | Distance travelled by the car                                                                                               | float64            |
 | 11      | title_status       | Status of the official legal owner document: missing, parts only, salvage, rebuilt, lien, clean, other                      | object             |
 | 12      | transmission       | Automatic, Manual, Other                                                                                                    | object             |
-| 13      | VIN                | Unique identifier for the car                                                                                               | object             |
+| 13      | VIN                | Unique identifier of the car                                                                                                | object             |
 | 14      | drive              | Type of car drive: 4wd (4 wheel drive), fwd (front wheel drive), rwd (rear wheel drive)                                     | object             |
 | 15      | size               | Car size: missing, full-size, mid-size, compact, sub-compact                                                                | object             |
 | 16      | type               | Car type: sedan, SUV, pickup, truck, coupe, hatchback, wagon, van, convertible, mini-van, offroad, bus, other               | object             |
@@ -104,7 +104,7 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 ###### Price and Fuel features:
 
-- Diesel cars are the most expensive, followed by eletric cars and other powered source cars. 
+- Diesel cars are the most expensive, followed by eletric cars and other sources to power cars. 
 - However, many cars available in the dataset are gas and have lower prices
 
 ###### Price and Condition features:
@@ -190,7 +190,7 @@ Nominal categorical features with high cardinality were encoded by using
 the Target Encoding technique as one-hot encoding method would increase the
 dimension of the dataset significantly. Although this technique might introduce
 a risk of target leakage and subsequently a special risk of overfitting, it is
-a powerful encoding technique for categorical features with high cardinality. Categorical features with high cardinality present in the dataset. The highest cardinality feature is the "model" feature which was not dropped to minimize data
+a powerful encoding technique for categorical features with high cardinality. Categorical features with high cardinality are present in the dataset. The highest cardinality feature is the "model" feature which was not dropped to minimize data
 loss. As a result, the target encoding technique was employed and the risk of
 overfitting was mitigated with cross-validation.
 
@@ -243,7 +243,7 @@ Below is the result of the model validation:
 
 The black line is the perfect prediction e.g. the predicted value equals the actual values. The train models can be considered making acceptable predictions because these predictions converged along the black line with some exceptions.
 
-**The Ridge model was selected with 73% R2 score and 6,495 RMSE score.** This reveals that 73% of the variability observed in the "price" variable can be explained or predicted by the selected model. In addtion, the prediction is off about $$6.5K.
+**The Ridge model was selected with 73% R2 score and 6,495 RMSE score.** This reveals that 73% of the variability observed in the "price" variable can be explained or predicted by the selected model. In addtion, the RMSE suggests that on everage or the typical difference between the predictions and the actual prices is about $6.5K - with larger errors being weighted more heavily.
 
 ### 6. Evaluation
 
@@ -265,11 +265,11 @@ Permutation feature importance model inspection technique randomly shuffles a si
 
 Features that are important on the train set but not on the test set might cause the model to overfit. The similarity of the feature importance ranking between those two plots, train and test, suggests that the selected model is not overfitting.
 
-In additiion, when data contains strong multicollinear features, the results of permutation importance might be misleading in some cases. When a feature is permuted, the model can get the same information from the other correlated feature. Therefore, performance of the model does not effect. This is not the case for the selected model because the permutation importance plot shows that permuting a feature drops the accuracy by 0.5. In addition, based is on the correlation matrix above, features which are strong collinear do not present.
+In additiion, when data contains strong multicollinear features, the results of permutation importance might be misleading in some cases. When a feature is permuted, the model can get the same information from the other correlated feature. Therefore, performance of the model does not effect. This is not the case for the selected model because the permutation importance plot shows that permuting a feature drops the accuracy by 0.5. In addition, based is on the correlation matrix above, features which are strong collinear are not present.
 
 ## 9. Conclusion and Recommendations
 
-To understand what drives the price of used cars, a used car dataset was explored and transformed so that three multivariate linear regression models named Ridge, Lasso, Linear Regression, were built and validated. The model with highest quality was inspected to identify the top three features which influence the model the most. They are **“model”, “odometer” and “year”**.
+To understand what drives the price of used cars, a used car dataset was explored and transformed so that three multivariate linear regression models named Ridge, Lasso, Linear Regression, were built and validated. The model with the highest quality was inspected to identify the top three features which influence the model the most. They are **“model”, “odometer” and “year”**.
 
 It is important to mention that the identification of feature importance is based on coefficients. Coefficients in multivariate regression models represent the dependency between a given independent feature (like “odometer”) and the target or dependent variable (“price”), conditional on the other features. They reflect the average change in the target (“price”) for one unit of change in the independent feature (“odometer”) while other features are held constant in the model. Keeping other features static is a statistical condition and not a realistic condition in the real world. 
 
