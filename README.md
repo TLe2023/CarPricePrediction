@@ -212,7 +212,7 @@ overfitting was mitigated with cross-validation.
 
 **Hyperparameter tuning:** The popular GridSearchCV was not used to tweak model performance for optimal results because it can be computationally expensive for this dataset. Instead, RidgeCV and LassoCV modules were used because these modules implement Ridge regression and Lasso regression with built-in cross-validation of the alpha parameter - the hyperparameter. By default, they work in the same way as GridSearchCV with Leave-One-Out Cross-Validation to select an optimum alpha parameter.
 
-**Feature selection:** RidgeCV and LassoCV were train with all transformed features of the trtrainataset. SelectFromModel was used to select features for the Linear Regression model.
+**Feature selection:** RidgeCV and LassoCV were train with all transformed features of the train dataset. SelectFromModel was used to select features for the Linear Regression model.
 
 **Validation metrics:** Two measuring metrices are used to validate how well the predictions of the train models approximate the real data values. They are:
 
@@ -220,7 +220,7 @@ overfitting was mitigated with cross-validation.
 
 - RMSE or Root Mean Squared Error (loss)
 
-R2 is the default scoring in many sklearn models. The best possible R2 score is 1.0 indicating all variance in the target variable can be explained by the model. The RMSE score was added as it is sensitive to outliers and due to its ease of interpretation. It measures the average difference between the predicted and actual values in the same unit. The lower RMSE score indicates a better performance and the best possible RMSE score is 0 since it is a loss measurement.
+R2 is the default scoring in many sklearn models. The best possible R2 score is 1.0 indicating all variance in the target variable can be explained by the model. The RMSE score was added as it is sensitive to outliers and due to its ease of interpretation. It measures the average difference between the predicted and actual values in the same unit of the target. The lower RMSE score indicates a better performance and the best possible RMSE score is 0 since it is a loss measurement.
 
 #### 5.2 Validate and Select Model
 
