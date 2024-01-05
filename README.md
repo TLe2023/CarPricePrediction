@@ -194,9 +194,7 @@ a powerful encoding technique for categorical features with high cardinality. Ca
 loss. As a result, the target encoding technique was employed and the risk of
 overfitting was mitigated with cross-validation.
 
-**Scaling and normalization:** Attributes were scaled with the standard
-scaler. Target feature, 'price', was normalized with quartile the
-transformation technique.
+**Scaling and normalization:** Attributes were scaled with the standard scaler. Target feature, 'price', was normalized with the quantile transformation technique.
 
  ![fig10](images/target.png)
 
@@ -228,18 +226,16 @@ R2 is the default scoring in many sklearn models. The best possible R2 score is 
 
 Below is the result of the model validation:
 
-**Scoring:** The scoring table below illustrates that all three models achieved similar performance. The RMSE scores of all three models are higher the baseline which is 12,578 on test set.
-
- Lasso Regression performed best with a small margin. Models were scored on both the trained set and test set. A slight increase in the RMSE loss score and a decrease in the R2 score on the test set indicated that the models were not overfitted. 
+**Scoring:** The scoring table below illustrates that all three models achieved similar performance. The RMSE scores of all three models are higher the baseline which is 12,578 on test set. Ridge Regression performed best with a small margin. Models were scored on both the trained set and test set. A slight increase in the RMSE loss score and a decrease in the R2 score on the test set indicated that the models were not overfitted. 
 
 | No. | Model                     | R2   | RMSE     |
 | --- | ------------------------- | ---- | -------- |
-| 0   | RidgeCV - Train           | 0.76 | 6,183.48 |
-| 1   | RidgeCV - Test            | 0.73 | 6,489.48 |
-| 2   | LassoCV - Train           | 0.76 | 6,180.43 |
-| 3   | LassoCV - Test            | 0.73 | 6,488.04 |
-| 4   | Linear Regression - Train | 0.72 | 6,651.70 |
-| 5   | Linear Regression - Test  | 0.69 | 6,984.39 |
+| 0   | RidgeCV - Train           | 0.76 | 6,189.78 |
+| 1   | RidgeCV - Test            | 0.73 | 6,495.39 |
+| 2   | LassoCV - Train           | 0.76 | 6,205.32 |
+| 3   | LassoCV - Test            | 0.73 | 6,509.41 |
+| 4   | Linear Regression - Train | 0.72 | 6,682.20 |
+| 5   | Linear Regression - Test  | 0.69 | 7,011.94 |
 
 **Actual vs Prediction:** to validate the performance of the models, the Actual vs Prediction scatter chart below were plotted.
 
@@ -247,9 +243,9 @@ Below is the result of the model validation:
 
 The black line is the perfect prediction e.g. the predicted value equals the actual values. The trained models can be considered making acceptable predictions because these predictions converged along the black line with some exceptions.
 
-**The Lasso model is selected with 73% R2 score and 6,488 MedAE score.** This reveals that 73% of the variability observed in the "price" variable can be explained or predicted by the selected model. In addtion, the prediction is off about $$6.5K.
+**The Ridge model was selected with 73% R2 score and 6,495 RMSE score.** This reveals that 73% of the variability observed in the "price" variable can be explained or predicted by the selected model. In addtion, the prediction is off about $$6.5K.
 
-### 6 Evaluation
+### 6. Evaluation
 
 To identify which which features are most predictive, two techniques were used: Coefficients and Permutation feature importance.
 
@@ -263,13 +259,15 @@ The results can be interpreted as the follows: An increase of the “model” or
 
 #### 6.2 Permutation feature importance
 
-Permutation feature importance model inspection technique randomly shuffles a single feature value and consequently breaks the relationship between the feature and the target - price. The decrease in the model score indicates the level of dependency of the model to the feature and, therefore, how important the feature is to the model. Below are the results of permutation importance computed on both the trained set and the test set for the selected model. The top three features are **"model", "odometer" and “year”**. The results are consistant with that of the coefficient method.
+Permutation feature importance model inspection technique randomly shuffles a single feature value and consequently breaks the relationship between the feature and the target - price. The decrease in the model score indicates the level of dependency of the model to the feature and, therefore, how important the feature is to the model. Below are the results of permutation importance computed on both the train set and the test set for the selected model. The top three features are **"model", "odometer" and “year”**. The results are consistant with that of the coefficient method.
+
+
 
 ![fig14](images/permutation.png)
 
-Features that are important on the trained set but not on the test set might cause the model to overfit. The similarity of the feature importance ranking between those two plots, trained and test, suggests that the selected model is not overfitting.
+Features that are important on the train set but not on the test set might cause the model to overfit. The similarity of the feature importance ranking between those two plots, train and test, suggests that the selected model is not overfitting.
 
-In additiion, when data contains strong multicollinear features, the results of permutation importance might misleading in some cases. When a feature is permuted, the model can get the same information from the other correlated feature. Therefore, performance of the model does not effect. This is not the case for the selected model because the permutation importance plot shows that permuting a feature drops the accuracy by 0.5. In addition, based is on the correlation matrix above, features which are strong collinear do not present.
+In additiion, when data contains strong multicollinear features, the results of permutation importance might be misleading in some cases. When a feature is permuted, the model can get the same information from the other correlated feature. Therefore, performance of the model does not effect. This is not the case for the selected model because the permutation importance plot shows that permuting a feature drops the accuracy by 0.5. In addition, based is on the correlation matrix above, features which are strong collinear do not present.
 
 ## 9. Conclusion and Recommendations
 
