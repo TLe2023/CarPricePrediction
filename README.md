@@ -255,7 +255,7 @@ The coefficients of the selected model were plotted below. The plot shows depend
 
 ![fig13](images/coefs.png)
 
-The results can be interpreted as the follows: An increase of the “model” or “year” will induce an increase of the “price” **when all other features remain constant**. On the other hand, a decrease of the "odometer"" will induce an increase of the “price” **when all other features remain constant**.
+The results can be interpreted as the follows: When the value of the “model” or “year” increases, the “price” increases (**when all other features remain constant**). On the other hand, when the "odometer" decreases, the "price" also increases (**when all other features remain constant**).
 
 #### 6.2 Permutation feature importance
 
@@ -273,9 +273,9 @@ To understand what drives the price of used cars, a used car dataset was explore
 
 It is important to mention that the identification of feature importance is based on coefficients. Coefficients in multivariate regression models represent the dependency between a given independent feature (like “odometer”) and the target or dependent variable (“price”), conditional on the other features. They reflect the average change in the target (“price”) for one unit of change in the independent feature (“odometer”) while other features are held constant in the model. Keeping other features static is a statistical condition and not a realistic condition in the real world. 
 
-In addition, the relationships between the features and the target do not imply causal relationships. There are potentially unobserved confounding variables that could be correlated with both the target variable, “price”, and other identified features: “model” or “odometer” or “year”. One example could be the production capacity of new cars. The positive “year” and “price” relationship suggests that the more recent a car is, the better it has in price. However, our dataset includes used cars manufactured up to 2022. It was generally acknowledged that used cars prices went up during the Covid and global chip shortage period of 2020–2023.
+In addition, the relationships between the features and the target do not imply causal relationships. The positive “year” and “price” relationship suggests that when the car manufacturing year increases, the price also increases. It is tempting to infer that the car manufacturing year causes an increase or decrease of the price. There are potentially unobserved confounding variables that could be correlated with both the target variable, “price”, and other identified features: “model” or “odometer” or “year”. One example could be the production capacity of new cars. Our dataset includes used cars manufactured up to 2022. It was generally acknowledged that used cars prices went up during the Covid and global chip shortage period of 2020–2023.
 
-George Box wrote “All models are wrong, some are useful”. While **the relationship between the identified features and the target feature ("price") should be interpreted with caution**, the project findings still pinpoint to what consumers generally value in a used car:  **the model of the car, a car with fewer miles and a more recent car.**
+George Box wrote “All models are wrong, some are useful”. While **the relationship between the identified features and the target feature ("price") should be interpreted with caution**, the project findings still pinpoint to factors correlated with the value of a used car:  **the model of the car, the distance traveled by the car and the manufacturing year of the car.**
 
 **Next steps:** 
 
