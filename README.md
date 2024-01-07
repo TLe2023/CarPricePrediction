@@ -8,7 +8,7 @@ The goal of this project is to understand what factors make a used car more or l
 
 ## 2. Methodology
 
-The Cross-Industry Standard Process for Data Mining (CRISP-DM) framework is applied to guide this effort. The framework includes six phases: business understanding, data understanding, data preparation, modeling, evaluation, and deployment. This project will focus on the first five phases of the CRISP-DM framework.
+The Cross-Industry Standard Process for Data Mining (CRISP-DM) framework is applied to guide this effort. The framework includes six phases: business understanding, data understanding, data preparation, modeling, evaluation, and deployment. 
 
 After understanding the business objectives, the collected data will be explored by using visualizations and probability distributions to form initial findings and hypothesis. Then, data will be prepared to handle any integrity issues and cleaning. Features or attributes will be engineered for modelling. Next, a few different predictive regression models with the price as the target will be built with different and, hopefully, optimal parameters. They are Ridge, Lasso and Linear regression models with a cross-validation method applied. Lastly, one model that appears to have high quality (compared to the baseline and the other built models) will be validated and inspected.  The importance of each feature will be identified to determine if meaningful insights on drivers of used car prices can be provided.
 
@@ -89,7 +89,7 @@ The dataset which includes observations with prices within the range of 500 - 20
 - Used cars which are manufactured around the year 2000 (e.g. 10-15 years old) seem to have the lowest value.
 
 - Rear wheel drive cars seem to dominate the classic car population while recent year cars tend to be front wheel drive cars (less expensive) and four wheel drive cars (more expensive).
-  
+
 ![fig1](images/year_price_drive.png)  
 ![fig5](images/price_year_sample.png) 
 
@@ -139,9 +139,9 @@ The dataset which includes observations with prices within the range of 500 - 20
 ##### Price and State features:
 
 - California and Floria lead in volume of cars. There is no obvious differences in prices across all states
-  
+
 ![fig8](images/count_state_manufacturer.png)
-  
+
 ![fig9](images/box_state_manufacturer.png)
 
 #### 3.2.5 Hypothesis
@@ -164,11 +164,11 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 - **Identify and remove outliers:** Outliers were removed by using the interquartile technique with a modification of the interquartile range (IQR). The 1.5 x IQR rule is applied to the "odometer" feature. For the "price" and "year" features, the lower bound or the upper bound were modified based on the results from the exploratory data analysis. This approach of adjusting the IQR bounderies attempted to balance data lost and model performance.
   
-  | No. | Attributes | Min    | Max      | Count - Before | Count - After |
-  | --- | ---------- | ------ | -------- | -------------- | ------------- |
-  | 0   | Price      | 500.0  | 57,322   | 426,880        | 372,713       |
-  | 1   | Year       | 1920   | 2022     | 425,675        | 371,733       |
-  | 2   | Odometer   | 0.0    | 277,231  | 422,480        | 370,669       |
+  | No. | Attributes | Min   | Max     | Count - Before | Count - After |
+  | --- | ---------- | ----- | ------- | -------------- | ------------- |
+  | 0   | Price      | 500.0 | 57,322  | 426,880        | 372,713       |
+  | 1   | Year       | 1920  | 2022    | 425,675        | 371,733       |
+  | 2   | Odometer   | 0.0   | 277,231 | 422,480        | 370,669       |
 
 ### 4.2. Data Transformation
 
@@ -276,7 +276,7 @@ George Box wrote “All models are wrong, some are useful”. While **the relati
 
 **Next steps:** 
 
-The project can be continued with further optimizing the performance of the models. Some examples are: using Lasso as the feature selector and/or applying additional and different algorithms. In addition, special or unique features to distinguish antique cars (which yield a high value) were not observed in this dataset and can be considered to be added. 
+The project can be continued with further optimizing the performance of the models. Some examples are: using Lasso as the feature selector and/or applying additional and different algorithms. In addition, special or unique features to distinguish antique cars (which yield a high value) were not observed in this dataset and can be considered to be added. Given that the used car model is highly correlated with the car price and that there is a very long list of models in the inventory, machine learning algorithms could be used to further classify the used cars as well as to forecast the demand of used cars to assist the inventory fine-tuning effort.
 
 ## 8. Jupyter Notebook
 
