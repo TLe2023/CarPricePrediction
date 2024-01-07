@@ -92,7 +92,8 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 - Rear wheel drive cars seem to dominate the classic car population while recent year cars tend to be front wheel drive cars (less expensive) and four wheel drive cars (more expensive).
   
-  ![fig5](images/price_year_sample.png) 
+![fig1](images/year_price_drive.png)  
+![fig5](images/price_year_sample.png) 
 
 ##### Price, Odometer and Transmission features:
 
@@ -100,7 +101,7 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 #### 3.2.4 Explore the relationship of the Price feature and other categorical features
 
-  ![fig6](images/count_cat.png)
+![fig6](images/count_cat.png)
 
 ##### Price and Fuel features:
 
@@ -131,8 +132,6 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 - Mini van category is the lowest valued category while interestingly, used pickups have good prices
 
-###### 
-
 ![fig7](images/box_cat.png)
 
 ##### Price and Manufacturer features:
@@ -143,11 +142,11 @@ The dataset which includes observations with prices within the range of 500 - 20
 
 - California and Floria lead in volume of cars. There is no obvious differences in prices across all states
   
-  ![fig8](images/count_state_manufacturer.png)
+![fig8](images/count_state_manufacturer.png)
   
-  ![fig9](images/box_state_manufacturer.png)
+![fig9](images/box_state_manufacturer.png)
 
-## 3.2.5 Hypothesis
+#### 3.2.5 Hypothesis
 
 - Odometer seems to have a strong negative correlation with price. Cars with low odometer have better values.
 
@@ -222,7 +221,7 @@ overfitting was mitigated with cross-validation.
 
 R2 is the default scoring in many sklearn models. The best possible R2 score is 1.0 indicating all variance in the target variable can be explained by the model. The RMSE score was added as it is sensitive to outliers and due to its ease of interpretation. It measures the average difference between the predicted and actual values in the same unit of the target. The lower RMSE score indicates a better performance and the best possible RMSE score is 0 since it is a loss measurement.
 
-#### 5.2 Validate and Select Model
+### 5.2 Validate and Select Model
 
 Below is the result of the model validation:
 
@@ -245,11 +244,11 @@ The black line is the perfect prediction e.g. the predicted value equals the act
 
 **The Ridge model was selected with 73% R2 score and 6,495 RMSE score.** This reveals that 73% of the variability observed in the "price" variable can be explained or predicted by the selected model. In addition, the RMSE suggests that on everage or the typical difference between the predictions and the actual prices is about $6.5K - with larger errors being weighted more heavily.
 
-### 6. Evaluation
+## 6. Evaluation
 
 To identify which which features are most predictive, two techniques were used: Coefficients and Permutation feature importance.
 
-#### 6.1 Coefficients
+### 6.1 Coefficients
 
 The coefficients of the selected model were plotted below. The plot shows dependencies between a feature and the target (“price”). They are **“model”, “odometer” and “year”** features. 
 
@@ -257,7 +256,7 @@ The coefficients of the selected model were plotted below. The plot shows depend
 
 The results can be interpreted as the follows: When the value of the “model” or “year” increases, the “price” increases (**when all other features remain constant**). On the other hand, when the "odometer" decreases, the "price" also increases (**when all other features remain constant**).
 
-#### 6.2 Permutation feature importance
+### 6.2 Permutation feature importance
 
 Permutation feature importance model inspection technique randomly shuffles a single feature value and consequently breaks the relationship between the feature and the target - price. The decrease in the model score indicates the level of dependency of the model to the feature and, therefore, how important the feature is to the model. Below are the results of permutation importance computed on both the train set and the test set for the selected model. The top three features are **"model", "odometer" and “year”**. The results are consistant with that of the coefficient method.
 
