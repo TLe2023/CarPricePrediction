@@ -1,5 +1,3 @@
-# 
-
 # What drives the price of a used car?
 
 ## 1.  Business Understanding
@@ -266,7 +264,7 @@ Features that are important on the train set but not on the test set might cause
 
 In additiion, when data contains strong multicollinear features, the results of permutation importance might be misleading in some cases. When a feature is permuted, the model can get the same information from the other correlated feature. Therefore, performance of the model does not effect. This is not the case for the selected model because the permutation importance plot shows that permuting a feature drops the accuracy by 0.5. In addition, based is on the correlation matrix above, features which are strong collinear are not present.
 
-## 9. Conclusion and Recommendations
+## 7. Conclusion and Recommendations
 
 To understand what drives the price of used cars, a used car dataset was explored and transformed so that three multivariate linear regression models named Ridge, Lasso, Linear Regression, were built and validated. The model with the highest quality was inspected to identify the top three features which influence the model the most. They are **“model”, “odometer” and “year”**.
 
@@ -280,6 +278,6 @@ George Box wrote “All models are wrong, some are useful”. While **the relati
 
 The project can be continued with further optimizing the performance of the models. Some examples are: using Lasso as the feature selector and/or applying additional and different algorithms. In addition, special or unique features to distinguish antique cars (which yield a high value) were not observed in this dataset and can be considered to be added. 
 
-## 10. Jupyter Notebook
+## 8. Jupyter Notebook
 
 Please refer to the [Used Car Jupiter Notebook](UsedCarPricePrediction.ipynb) for more information.
